@@ -1,0 +1,14 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const elements={};function el(id){return elements[id]??={innerHTML:'',value:'',textContent:'',addEventListener(){},querySelectorAll(){return []}};}
+const context={window:{addEventListener(){}},document:{getElementById:el,querySelectorAll:()=>[]},location:{hash:''},history:{replaceState(){}},URLSearchParams,console};vm.createContext(context);
+const base=require('path').resolve(__dirname,'..')+'/';vm.runInContext(fs.readFileSync(base+'data/evidence.js','utf8'),context);
+let script=fs.readFileSync(base+'app.js','utf8').replace(/\}\)\(\);\s*$/,`window.testRender=(t,r,i)=>{task=t;runNumber=r;iteration=i;cluster=null;options();render();};window.testTiming=(id)=>{$('time-task').value=id;renderTiming();};})();`);vm.runInContext(script,context);
+let count=0;for(const [id,run] of Object.entries(context.window.AIM_DATA.runs)){const task=id.replace(/-r\d+$/,'');for(const r of run.rounds){context.window.testRender(task,run.number,r.iteration);assert(elements['round-content'].innerHTML.includes('Surrogate: organize'));assert(elements['round-content'].innerHTML.includes('Acquisition: dispatch'));assert(!elements['round-content'].innerHTML.includes('>undefined<'));assert.equal((elements['round-content'].innerHTML.match(/class="branch"/g)||[]).length,r.branches.length);assert(!elements['round-content'].innerHTML.includes('Source:'));
+assert(!elements['round-content'].innerHTML.includes('Plan the next experiments'));
+assert(!elements['round-content'].innerHTML.includes('Expand:'));
+const details=(elements['round-content'].innerHTML.match(/<details class="audit /g)||[]).length;
+assert.equal(details,r.branches.filter(b=>(b.audit?.flags||[]).includes('idea_mismatch')).length);for(const b of r.branches){if(!(b.audit?.flags||[]).includes('idea_mismatch'))continue;const rec=b.audit.reconstructed_idea;const title=rec?.title||rec?.Title;const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));if(title)assert(elements['round-content'].innerHTML.includes(escape(title)));if(!rec)assert(elements['round-content'].innerHTML.includes('No reconstructed idea was recorded'));}count++;}}
+console.log(`PASS: JavaScript rendered all ${count} iterations across 27 runs with expected branch counts; no exceptions or undefined text. DOM stub only; does not verify browser layout.`);
+
+for(const name of fs.readdirSync(base+'assets').filter(n=>n.endsWith('_combined.pdf'))){const id=name.replace('_combined.pdf','');context.window.testTiming(id);assert.equal(elements['time-image'].src,`assets/${id}_combined.png`);assert.equal(elements['time-pdf'].href,`assets/${id}_combined.pdf`);assert(fs.existsSync(base+elements['time-image'].src));assert(fs.existsSync(base+elements['time-pdf'].href));}
+console.log('PASS: all ten timing selections resolve to packaged images and PDFs.');

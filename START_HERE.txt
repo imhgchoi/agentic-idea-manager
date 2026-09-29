@@ -1,0 +1,12 @@
+AIM HOMEPAGE — OPEN LOCALLY
+
+1. Extract the entire ZIP.
+2. Open the extracted AIM_HOMEPAGE folder.
+3. Double-click index.html to open it in your browser.
+
+Keep the folder contents together. You can move or rename the folder.
+All page data, figures, and the paper are included and work offline.
+No installation, server, API key, or original experiment files are needed.
+Use a modern browser with JavaScript enabled.
+
+README.md contains optional hosting and development instructions.

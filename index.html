@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AIM — Agentic Idea Management for Automated Research</title>
+<meta name="description" content="AIM organizes, estimates, and explores research ideas. Explore real cluster rankings, acquisition decisions, and audited outcomes across nine AutoLab tasks and 27 runs.">
+<meta name="theme-color" content="#f8f8f2">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
+<script defer src="data/evidence.js"></script><script defer src="app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header><nav class="wrap" aria-label="Main navigation"><a class="brand" href="#">a<span>i</span>m<span class="brand-dot">↗</span></a><div><a href="#method">Framework</a><a href="#explorer">Evidence explorer</a><a href="#results">Results</a><a class="nav-paper" href="assets/AIM_paper.pdf">Paper ↗</a></div></nav></header>
+<main id="main">
+<section class="hero wrap">
+<div class="eyebrow"><span class="dot"></span> AGENTIC IDEA MANAGER</div>
+<h1>Better research starts<br>with <em>better idea management.</em></h1>
+<p class="paper-title">AIM: Agentic Idea Management for Automated Research</p>
+<p class="hero-description">Organize what you know. Decide what to try.<br>Make every research direction—and the evidence behind it—inspectable.</p>
+<p class="authors">Hyeong Kyu Choi<sup>1,2</sup>, Bhavana Dalvi Mishra<sup>1</sup>, Jiefeng Chen<sup>1</sup>, Mihir Parmar<sup>1</sup>, Rui Meng<sup>1</sup>,<br>Chun-Liang Li<sup>1</sup>, Xiangru Tang<sup>1</sup>, Sharon Li<sup>2</sup>, Jinsung Yoon<sup>1</sup>, Tomas Pfister<sup>1</sup></p>
+<p class="affiliations"><sup>1</sup> Google Cloud AI Research &nbsp; <sup>2</sup> University of Wisconsin–Madison</p>
+<div class="hero-links"><a class="button primary" href="#explorer">Explore a real research run <span>↗</span></a><a class="button" href="assets/AIM_paper.pdf">Read the paper <span>↓</span></a></div>
+<div class="hero-map" aria-label="AIM loop: research ideas flow into the Agentic Surrogate, then Agentic Acquisition, experiments, and audited evidence that feeds the next iteration.">
+<div class="map-input"><span class="mini-label">THE SEARCH SPACE</span><div class="idea-stack"><span>Research idea</span><span>Research idea</span><span>Research idea</span></div></div><span class="flow-arrow" aria-hidden="true">→</span>
+<div class="map-module violet"><span class="mini-label">01 / UNDERSTAND</span><strong>Agentic Surrogate</strong><div class="cluster-art" aria-hidden="true"><span>● ● ●<br>● ●</span><span>● ●<br>● ● ●</span><span>● ●<br>●</span></div><p>Organize ideas · Estimate promise</p></div><span class="flow-arrow" aria-hidden="true">→</span>
+<div class="map-module green"><span class="mini-label">02 / INVESTIGATE</span><strong>Agentic Acquisition</strong><div class="action-art"><span>EXPLOIT</span><span>EXPLORE</span></div><p>Dispatch · Solve · Expand</p></div><span class="flow-arrow" aria-hidden="true">→</span><div class="map-output"><span class="mini-label">EXPERIMENTS</span><strong>Implement.<br>Evaluate.<br>Audit.</strong></div>
+<div class="feedback-line"><span>↳</span> Audited outcomes + reusable lessons <span>↰</span></div>
+</div>
+<div class="metrics"><div><strong>10</strong><span>AutoLab tasks</span></div><div><strong>+1.6 <small>pp</small></strong><span>System Optimization</span></div><div><strong>+4.9 <small>pp</small></strong><span>Model Development & CUDA</span></div><div><strong>Up to 3.1×</strong><span>Faster to the best baseline score</span></div></div>
+<p class="caption">Paper-reported results. Gains over ScientistOne; time-to-score comparison on Flash Attention. <a href="assets/AIM_paper.pdf#page=8">§5, Table 1 ↗</a> · <a href="assets/AIM_paper.pdf#page=9">Table 2 ↗</a> · <a href="assets/AIM_paper.pdf#page=10">Figure 4 ↗</a></p>
+</section>
+<section id="method" class="section wrap">
+<div class="section-heading"><div><p class="eyebrow">01 / THE FRAMEWORK</p><h2>A map of possibilities.<br>A reason for the next experiment.</h2></div><p>AIM searches over explicit research ideas. Inspired by Bayesian optimization, it separates understanding the idea space from choosing where to spend the experimental budget.</p></div>
+<div class="method-grid"><article class="method-card violet"><span class="mini-label">AGENTIC SURROGATE</span><h3>What looks promising?</h3><p><b>Organize.</b> Group ideas by semantic research direction, even when they come from different generation lineages. Rebuild the map as the pool grows.</p><p><b>Estimate.</b> Rank clusters and unevaluated ideas using observed scores, evidence gaps, novelty, and implementation lessons.</p><div class="method-foot">Ordinal ranks express relative promise—not calibrated reward predictions.</div></article><article class="method-card green"><span class="mini-label">AGENTIC ACQUISITION</span><h3>What should we try next?</h3><p><b>Dispatch.</b> Choose explore/exploit actions at both the cluster and idea levels, then select concrete ideas for parallel solvers.</p><p><b>Solve & expand.</b> Implement and evaluate the selected ideas. Use audited evidence to refine, combine, repair, or introduce new ideas.</p><div class="method-foot">A promising direction can still contain an unfamiliar idea worth exploring.</div></article></div>
+<div class="support-grid"><article><span class="number">03</span><div><h3>Solution Auditor</h3><p>Check task validity and idea–solution alignment. Discard invalid evidence; reconstruct mismatched ideas so results describe the mechanism actually implemented.</p></div></article><article><span class="number">04</span><div><h3>Resource Planner</h3><p>Adjust parallel breadth versus sequential feedback under a fixed branch budget. More rounds allow new evidence to influence later choices.</p></div></article></div>
+<figure class="main-figure"><a href="assets/mainfig.png" target="_blank" rel="noopener"><img src="assets/mainfig.png" alt="AIM framework: the search state connects the Agentic Surrogate’s Organize and Estimate operators, the Agentic Acquisition’s Dispatch, parallel Solvers and Expand operators, the Solution Auditor, and the Resource Planner." width="1920" height="782" loading="lazy"></a><figcaption>The AIM framework: organize and estimate ideas, dispatch parallel experiments, audit outcomes, and allocate the remaining budget. Click to view the full-size figure.</figcaption></figure>
+</section>
+<section class="evidence-section" id="explorer"><div class="wrap section">
+<div class="section-heading"><div><p class="eyebrow">02 / INTERPRETABILITY IN PRACTICE</p><h2>Follow the decision.<br>Inspect the evidence.</h2></div><p>Replay recorded research iterations across nine tasks and 27 runs. See the map, the rankings, the chosen actions, and what actually happened.</p></div>
+<div class="featured"><button data-case="data_select_ifeval,2,3"><span class="mini-label">START HERE · IFEVAL / RUN 2</span><strong>Explore inside a promising cluster <span>↗</span></strong><p>A rank-5 idea ties the incumbent. The rank-1 refinement regresses.</p></button><button data-case="data_select_ifeval,1,3"><span class="mini-label">IF EVIDENCE SURPRISES YOU</span><strong>A lower-ranked idea advances the run <span>↗</span></strong><p>Response structure exploration reaches 0.470 after a prior best of 0.433.</p></button><button data-case="data_select_ifeval,1,1"><span class="mini-label">IDEA–SOLUTION ALIGNMENT</span><strong>Credit the method actually built <span>↗</span></strong><p>The auditor catches a shift from model-based IFD to regex heuristics.</p></button></div>
+<div class="extra-trails"><span>More to explore</span><button data-case="flash_attention,1,7">Flash Attention: from 10 ideas to 80 ↗</button></div>
+<noscript><p class="notice">Enable JavaScript to explore recorded research iterations.</p></noscript>
+<div class="explorer-shell">
+<div class="controls"><label>Task<select id="task"></select></label><label>Run<select id="run"></select></label><div class="round-controls"><span class="control-label">Iteration</span><div id="rounds" aria-label="Choose iteration"></div></div></div>
+
+<div id="round-content" aria-live="polite"></div>
+<div class="explorer-notes"><b>Reading this replay.</b> Scores are the recorded <code>score</code> field on a 0–1 scale, not raw task accuracy. Ranks are relative; 1 is most promising. Cluster IDs are local to each iteration and may change meaning. Rationale text and lessons are agent-authored records, not independent verification. This explorer does not rerun experiments.</div>
+</div>
+</div></section>
+<section id="results" class="section wrap"><div class="section-heading"><div><p class="eyebrow">03 / RESULTS FROM THE PAPER</p><h2>Better ideas. Better outcomes.</h2></div><p>Mean scores across three runs. AIM leads the two task-group averages; individual task outcomes vary. Values below are transcribed from Tables 1 and 2, separately from the artifact replay.</p></div>
+<div class="results-grid"><div><h3>System Optimization</h3><div class="comparison"><div><span>AIM</span><b>67.0</b><i style="--value:67%;--bar:var(--purple)"></i></div><div><span>ScientistOne</span><b>65.4</b><i style="--value:65.4%"></i></div></div></div><div><h3>Model Development & CUDA</h3><div class="comparison"><div><span>AIM</span><b>55.8</b><i style="--value:55.8%;--bar:var(--purple)"></i></div><div><span>ScientistOne</span><b>50.9</b><i style="--value:50.9%"></i></div></div></div></div>
+<div class="table-scroll"><table class="results-table"><caption>Task scores (%) · mean ± standard error · 3 runs</caption><thead><tr><th scope="col">Task</th><th scope="col">ScientistOne</th><th scope="col">AIM</th><th scope="col">Difference (pp)</th></tr></thead><tbody id="results-body"></tbody></table></div>
+<p class="caption">Selected comparator: ScientistOne, the strongest reported baseline by task-group average. This table is not a claim that AIM wins every task against every method; for example, AdaEvolve leads Data Selection IFEval. See the paper for the full baseline comparison.</p>
+<div class="time-analysis" id="time-efficiency">
+<div class="section-heading"><div><p class="eyebrow">WALL-CLOCK TIME ANALYSIS</p><h2>How quickly does discovery happen?</h2></div><p>On Flash Attention, AIM reaches ScientistOne’s best score up to 3.1× faster and reaches its own best score of 90.5% after 3.3 hours. Explore the supplied timing figures for all ten tasks.</p></div>
+<div class="time-controls"><label for="time-task">Task</label><select id="time-task"></select><a id="time-pdf" href="assets/flash_attention_combined.pdf" target="_blank" rel="noopener">View full-resolution figure ↗</a></div>
+<figure class="time-figure"><img id="time-image" src="assets/flash_attention_combined.png" alt="Flash Attention: mean best-so-far score versus wall-clock time, alongside final scores and the times at which they are reached." loading="lazy"><figcaption id="time-caption"></figcaption></figure>
+<p class="caption">The left panel tracks mean best-so-far scores; the right panel marks final score levels and their attainment times. Time to a shared score threshold differs from time to each method’s own best score. Results vary by task; the 3.1× claim applies to Flash Attention. <a href="assets/AIM_paper.pdf#page=10">Figure 4 ↗</a> · <a href="assets/AIM_paper.pdf#page=35">Appendix D.3 ↗</a></p>
+</div>
+</section>
+<section class="closing wrap"><p class="eyebrow">RESEARCH YOU CAN FOLLOW</p><h2>From a promising idea<br>to an inspectable experiment.</h2><p>Read the method, explore the decisions, and trace the evidence.</p><div class="hero-links"><a class="button primary" href="assets/AIM_paper.pdf">Read the paper ↗</a><a class="button" href="#bibtex">BibTeX ↓</a></div></section>
+<section id="bibtex" class="citation wrap"><h2>BibTeX</h2><pre><code>to be released soon</code></pre></section>
+</main><footer class="wrap"><a class="brand" href="#">aim<span class="brand-dot">↗</span></a><p>Agentic Idea Management for Automated Research<br><span>Google Cloud AI Research · University of Wisconsin–Madison</span></p><a href="#bibtex">BibTeX ↗</a></footer>
+</body></html>
