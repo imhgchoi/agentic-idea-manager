@@ -1,6 +1,36 @@
 'use strict';
 (() => {
 const $ = id => document.getElementById(id);
+$('copy-bibtex').addEventListener('click', async () => {
+ const button = $('copy-bibtex');
+ const status = $('copy-bibtex-status');
+ const text = $('bibtex-code').textContent.trim();
+ button.disabled = true;
+ status.textContent = '';
+ let copied = false;
+ try {
+  if (navigator.clipboard?.writeText) {
+   await navigator.clipboard.writeText(text);
+   copied = true;
+  }
+ } catch (_) { /* Try the local-page fallback below. */ }
+ if (!copied) {
+  const field = document.createElement('textarea');
+  field.value = text;
+  field.readOnly = true;
+  field.style.cssText = 'position:fixed;left:-9999px;top:0;font-size:16px';
+  document.body.appendChild(field);
+  try {
+   field.select();
+   copied = document.execCommand('copy');
+  } catch (_) { /* Keep the citation available for manual copying. */ }
+  finally { field.remove(); }
+ }
+ button.disabled = false;
+ button.textContent = copied ? 'Copied!' : 'Copy BibTeX';
+ status.textContent = copied ? 'Citation copied to clipboard.' : 'Could not copy automatically. Please select the citation and copy it manually.';
+ button.focus({preventScroll:true});
+});
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt = n => typeof n === 'number' && Number.isFinite(n) ? n.toFixed(3) : '—';
 const DATA = window.AIM_DATA;

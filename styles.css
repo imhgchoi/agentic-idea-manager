@@ -10,3 +10,4 @@
 @media(max-width:700px){.hero-navigation{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.hero-navigation .button{min-width:0}}
 
 .hero-navigation .button.primary{background:var(--purple);border-color:var(--purple);color:#fff;box-shadow:0 4px 14px #6952ae30}.hero-navigation .button.primary:hover{background:#584297;border-color:#584297}
+.citation-heading{display:flex;align-items:center;justify-content:space-between;gap:16px}.citation-heading h2{margin:0}.citation-heading .button{flex-shrink:0}.citation-status{min-height:1.65em;margin:8px 0 0;font-size:12px;color:var(--muted)}.citation pre{overflow-wrap:anywhere}.citation-heading button:disabled{cursor:wait;opacity:.65}
