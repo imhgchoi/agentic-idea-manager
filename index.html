@@ -10,16 +10,16 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header><nav class="wrap" aria-label="Main navigation"><a class="brand" href="#">a<span>i</span>m<span class="brand-dot">↗</span></a><div><a href="#method">Framework</a><a href="#explorer">Evidence explorer</a><a href="#results">Results</a><a class="nav-paper" href="assets/AIM_paper.pdf">Paper ↗</a></div></nav></header>
+<header><nav class="wrap" aria-label="Main navigation"><a class="brand" href="#">a<span>i</span>m<span class="brand-dot">↗</span></a><div><a href="#method">Framework</a><a href="#explorer">Evidence explorer</a><a href="#results">Results</a><a class="nav-paper" href="https://arxiv.org/pdf/2609.38445">Paper ↗</a></div></nav></header>
 <main id="main">
 <section class="hero wrap">
 <div class="eyebrow"><span class="dot"></span> AGENTIC IDEA MANAGER</div>
-<h1>Better research starts<br>with <em>better idea management.</em></h1>
+<h1>Better research starts<br> with <em>better idea management.</em></h1>
 <p class="paper-title">AIM: Agentic Idea Management for Automated Research</p>
 <p class="hero-description">Organize what you know. Decide what to try.<br>Make every research direction—and the evidence behind it—inspectable.</p>
 <p class="authors">Hyeong Kyu Choi<sup>1,2</sup>, Bhavana Dalvi Mishra<sup>1</sup>, Jiefeng Chen<sup>1</sup>, Mihir Parmar<sup>1</sup>, Rui Meng<sup>1</sup>,<br>Chun-Liang Li<sup>1</sup>, Xiangru Tang<sup>1</sup>, Sharon Li<sup>2</sup>, Jinsung Yoon<sup>1</sup>, Tomas Pfister<sup>1</sup></p>
 <p class="affiliations"><sup>1</sup> Google Cloud AI Research &nbsp; <sup>2</sup> University of Wisconsin–Madison</p>
-<div class="hero-links hero-navigation"><a class="button" href="#method">Framework</a><a class="button primary" href="#explorer">Evidence Explorer</a><a class="button" href="#results">Results</a><a class="button" href="assets/AIM_paper.pdf">Read the Paper</a></div>
+<div class="hero-links hero-navigation"><a class="button" href="#method">Framework</a><a class="button primary" href="#explorer">Evidence Explorer</a><a class="button" href="#results">Results</a><a class="button" href="https://arxiv.org/pdf/2609.38445">Read the Paper</a></div>
 <div class="hero-map" aria-label="AIM loop: research ideas flow into the Agentic Surrogate, then Agentic Acquisition, experiments, and audited evidence that feeds the next iteration.">
 <div class="map-input"><span class="mini-label">THE SEARCH SPACE</span><div class="idea-stack"><span>Research idea</span><span>Research idea</span><span>Research idea</span></div></div><span class="flow-arrow" aria-hidden="true">→</span>
 <div class="map-module violet"><strong>Agentic Surrogate</strong><div class="cluster-art" aria-hidden="true"><span>● ● ●<br>● ●</span><span>● ●<br>● ● ●</span><span>● ●<br>●</span></div><p>Organize ideas · Estimate promise</p></div><span class="flow-arrow" aria-hidden="true">→</span>
@@ -27,7 +27,7 @@
 <div class="feedback-line"><span>↳</span> Audited outcomes + reusable lessons <span>↰</span></div>
 </div>
 <div class="metrics"><div><strong>10</strong><span>AutoLab tasks</span></div><div><strong>+1.6 <small>pp</small></strong><span>System Optimization</span></div><div><strong>+4.9 <small>pp</small></strong><span>Model Development & CUDA</span></div><div><strong>Up to 3.1×</strong><span>Faster to the best baseline score</span></div></div>
-<p class="caption">Paper-reported results. Gains over ScientistOne; time-to-score comparison on Flash Attention. <a href="assets/AIM_paper.pdf#page=8">§5, Table 1 ↗</a> · <a href="assets/AIM_paper.pdf#page=9">Table 2 ↗</a> · <a href="assets/AIM_paper.pdf#page=10">Figure 4 ↗</a></p>
+<p class="caption">Paper-reported results. Gains over ScientistOne; time-to-score comparison on Flash Attention. <a href="https://arxiv.org/pdf/2609.38445#page=8">§5, Table 1 ↗</a> · <a href="https://arxiv.org/pdf/2609.38445#page=9">Table 2 ↗</a> · <a href="https://arxiv.org/pdf/2609.38445#page=10">Figure 4 ↗</a></p>
 </section>
 <section id="method" class="section wrap">
 <div class="section-heading"><div><p class="eyebrow">01 / THE FRAMEWORK</p><h2>A map of possibilities.<br>A reason for the next experiment.</h2></div><p>AIM searches over explicit research ideas. Inspired by Bayesian optimization, it separates understanding the idea space from choosing where to spend the experimental budget.</p></div>
@@ -54,10 +54,10 @@
 <div class="section-heading"><div><p class="eyebrow">WALL-CLOCK TIME ANALYSIS</p><h2>How quickly does discovery happen?</h2></div><p>On Flash Attention, AIM reaches ScientistOne’s best score up to 3.1× faster and reaches its own best score of 90.5% after 3.3 hours. Explore the supplied timing figures for all ten tasks.</p></div>
 <div class="time-controls"><label for="time-task">Task</label><select id="time-task"></select><a id="time-pdf" href="assets/flash_attention_combined.pdf" target="_blank" rel="noopener">View full-resolution figure ↗</a></div>
 <figure class="time-figure"><img id="time-image" src="assets/flash_attention_combined.png" alt="Flash Attention: mean best-so-far score versus wall-clock time, alongside final scores and the times at which they are reached." loading="lazy"><figcaption id="time-caption"></figcaption></figure>
-<p class="caption">The left panel tracks mean best-so-far scores; the right panel marks final score levels and their attainment times. Time to a shared score threshold differs from time to each method’s own best score. Results vary by task; the 3.1× claim applies to Flash Attention. <a href="assets/AIM_paper.pdf#page=10">Figure 4 ↗</a> · <a href="assets/AIM_paper.pdf#page=35">Appendix D.3 ↗</a></p>
+<p class="caption">The left panel tracks mean best-so-far scores; the right panel marks final score levels and their attainment times. Time to a shared score threshold differs from time to each method’s own best score. Results vary by task; the 3.1× claim applies to Flash Attention. <a href="https://arxiv.org/pdf/2609.38445#page=10">Figure 4 ↗</a> · <a href="https://arxiv.org/pdf/2609.38445#page=35">Appendix D.3 ↗</a></p>
 </div>
 </section>
-<section class="closing wrap"><p class="eyebrow">RESEARCH YOU CAN FOLLOW</p><h2>From a promising idea<br>to an inspectable experiment.</h2><p>Read the method, explore the decisions, and trace the evidence.</p><div class="hero-links"><a class="button primary" href="assets/AIM_paper.pdf">Read the paper ↗</a><a class="button" href="#bibtex">BibTeX ↓</a></div></section>
+<section class="closing wrap"><p class="eyebrow">RESEARCH YOU CAN FOLLOW</p><h2>From a promising idea<br>to an inspectable experiment.</h2><p>Read the method, explore the decisions, and trace the evidence.</p><div class="hero-links"><a class="button primary" href="https://arxiv.org/pdf/2609.38445">Read the paper ↗</a><a class="button" href="#bibtex">BibTeX ↓</a></div></section>
 <section id="bibtex" class="citation wrap"><h2>BibTeX</h2><pre><code>to be released soon</code></pre></section>
 </main><footer class="wrap"><a class="brand" href="#">aim<span class="brand-dot">↗</span></a><p>Agentic Idea Management for Automated Research<br><span>Google Cloud AI Research · University of Wisconsin–Madison</span></p><a href="#bibtex">BibTeX ↗</a></footer>
 </body></html>
